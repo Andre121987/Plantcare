@@ -93,7 +93,13 @@ app.post('/signup', function (req, res) {
 
     // Create section
     req.session.loggedin = true;
-    req.session.user = { id: result.insertId, name, email, role };
+    req.session.user = {
+      user_id: result.insertId,
+      name,
+      surname,                
+      email,
+      role
+    };
 
     // Force save before redirect
     req.session.save(err => {

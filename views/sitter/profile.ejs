@@ -1,0 +1,71 @@
+<html>
+<head>
+  <%- include('../partials/header1.ejs') %>
+</head>
+
+<body>
+  <%- include('../partials/navbar2.ejs') %>
+
+   <a href="/dashboard" class="btn btn-secondary mb-3">Back</a>
+<div class="container mt-5">
+  <h2>Sitter Profile Settings</h2>
+
+    <form action="/sitter/profile" method="POST" enctype="multipart/form-data" class="mt-4">
+
+      <!-- PHOTO -->
+      <div class="mb-3">
+        <label class="form-label">Profile Photo</label>
+        <input type="file" name="photo" class="form-control">
+      </div>
+
+      <% if (profile.photo) { %>
+        <div class="mb-3">
+          <img src="<%= profile.photo %>" width="150" class="rounded shadow"/>
+        </div>
+      <% } %>
+
+      <!-- PHONE -->
+      <div class="mb-3">
+        <label class="form-label">Phone</label>
+        <input type="text" name="phone" class="form-control"
+               value="<%= profile.phone || '' %>">
+      </div>
+
+      <!-- BIOGRAPHY -->
+      <div class="mb-3">
+        <label class="form-label">Biography</label>
+        <textarea name="biography" class="form-control" rows="4"><%= profile.biography || '' %></textarea>
+      </div>
+
+      <!-- SKILLS -->
+      <div class="mb-3">
+        <label class="form-label">Skills (comma separated)</label>
+        <input type="text" name="skills" class="form-control"
+               value="<%= profile.skills || '' %>">
+      </div>
+
+      <!-- CITY -->
+      <div class="mb-3">
+        <label class="form-label">City</label>
+        <input type="text" name="city" class="form-control"
+               value="<%= profile.city || '' %>">
+      </div>
+
+      <!-- AVAILABILITY -->
+      <div class="mb-3">
+        <label class="form-label">Availability</label>
+        <select name="availability" class="form-select">
+          <option value="">Select</option>
+          <option value="full-time" <%= profile.availability === 'full-time' ? 'selected' : '' %>>Full-time</option>
+          <option value="part-time" <%= profile.availability === 'part-time' ? 'selected' : '' %>>Part-time</option>
+          <option value="weekends" <%= profile.availability === 'weekends' ? 'selected' : '' %>>Weekends</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-success">Save</button>
+    </form>
+  </div>
+
+  <%- include('../partials/footer.ejs') %>
+</body>
+</html>

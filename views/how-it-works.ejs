@@ -1,0 +1,104 @@
+<html>
+<head>
+  <title>How It Works</title>
+  <%- include('partials/header1.ejs') %>
+</head>
+
+<body>
+  <%- include('partials/navbar1.ejs') %>
+
+<div class="container mt-5">
+
+  <h2 class="text-center mb-4">How PlantCare Works &#127793 </h2>
+  <p class="text-center text-muted mb-5">
+    A simple way for plant owners and sitters to connect and care for plants.
+  </p>
+
+  <!-- STEP 1 -->
+  <div class="row align-items-center mb-5">
+    <div class="col-md-6">
+      <h3>1. Create your account</h3>
+      <p>
+        Whether you're a <strong>Plant Owner</strong> needing help or a 
+        <strong>Plant Sitter</strong> offering your care, start by creating your free account.
+        You choose your role during sign-up, and the platform personalizes your experience.
+      </p>
+      <a href="/join-now" class="btn btn-success">Join now</a>
+    </div>
+    <div class="col-md-6 text-center">
+      <img src="/public/images/step 1.png" class="img-fluid rounded shadow" alt="Sign up">
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="row align-items-center flex-md-row-reverse mb-5">
+    <div class="col-md-6">
+      <h3>2. Set your preferences</h3>
+      <p><strong>Plant Owners:</strong> Add your plants, describe their needs, and choose dates when you need help.</p>
+      <p><strong>Plant Sitters:</strong> Set your availability, your preferred suburbs, and your plant-care experience.</p>
+    </div>
+    <div class="col-md-6 text-center">
+      <img src="/public/images/step 2.png" class="img-fluid rounded shadow" alt="Sign up">
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="row align-items-center mb-5">
+    <div class="col-md-6">
+      <h3>3. Get matched</h3>
+      <p>
+        PlantCare connects Owners and Sitters based on location, availability, plant type, 
+        and experience. Sitters see available requests, and Owners can browse sitters nearby.
+      </p>
+    </div>
+    <div class="col-md-6 text-center">
+      <img src="/public/images/step 3.png" class="img-fluid rounded shadow" alt="Sign up">
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="row align-items-center flex-md-row-reverse mb-5">
+    <div class="col-md-6">
+      <h3>4. Send a request</h3>
+      <p><strong>Owners</strong> send a care request, add instructions, and select dates.</p>
+      <p><strong>Sitters</strong> accept or decline requests and can communicate with owners (future feature).</p>
+    </div>
+    <div class="col-md-6 text-center">
+    <img src="/public/images/step 4.png" class="img-fluid rounded shadow" alt="Sign up">
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="row align-items-center mb-5">
+    <div class="col-md-6">
+      <h3>5. Plant care begins </h3>
+      <p>
+        Sitters follow the care routine: watering, misting, sunlight, soil check, 
+        and can send photo updates (future feature).  
+        Owners track progress from their dashboard.
+      </p>
+    </div>
+    <div class="col-md-6 text-center">
+     <img src="/public/images/step 5.png" class="img-fluid rounded shadow" alt="Sign up">
+    </div>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="row align-items-center flex-md-row-reverse mb-5">
+    <div class="col-md-6">
+      <h3>6. Completion & feedback</h3>
+      <p>
+        When the care period ends, Sitters mark the task as completed and Owners can leave feedback.  
+        Sitters build their reputation and receive more care opportunities.
+      </p>
+    </div>
+    <div class="col-md-6 text-center">
+      <img src="/public/images/step 6.png" class="img-fluid rounded shadow" alt="Sign up">
+    </div>
+  </div>
+
+</div>
+
+<%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<html>
+<head>
+  <%- include('../partials/header1.ejs') %>
+</head>
+
+<body>
+  <%- include('../partials/navbar2.ejs') %>
+
+  <div class="container mt-5">
+      <h2 class="mb-4">Owner Dashboard</h2>
+
+      <p>Welcome, <%= name %> 👋</p>
+
+      <div class="row mt-4">
+
+        <div class="col-md-4 mb-4">
+          <a href="/create-request" class="text-decoration-none text-dark">
+            <div class="action-card p-4 border rounded">
+              <h4>🌿 Create Plant Care Request</h4>
+              <p>Post a new request for a sitter to take care of your plant.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <a href="/my-requests" class="text-decoration-none text-dark">
+            <div class="action-card p-4 border rounded">
+              <h4>📋 My Requests</h4>
+              <p>View your pending or completed care requests.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <a href="/messages" class="text-decoration-none text-dark">
+            <div class="action-card p-4 border rounded">
+              <h4>💬 Messages</h4>
+              <p>Chat with your assigned sitters.</p>
+            </div>
+          </a>
+        </div>
+
+      </div>
+  </div>
+
+  <%- include('../partials/footer.ejs') %>
+</body>
+</html>

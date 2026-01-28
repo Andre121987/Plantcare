@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search plant sitters</title>
+  <%- include('partials/header1.ejs') %>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <%- include('partials/navbar1.ejs') %>
+
+  <div class="container mt-5">
+
+    <h2 class="mb-3">
+      Plant sitters in "<%= location %>"
+    </h2>
+
+    <p class="text-muted">
+      Total found: <%= sitters.length %>
+    </p>
+
+    <% if (sitters.length === 0) { %>
+      <p>No plant sitters found.</p>
+    <% } %>
+
+    <ul class="list-group mt-4">
+
+      <% sitters.forEach(function(sitter) { %>
+        <li class="list-group-item">
+
+          <strong>
+            <%= sitter.name || sitter.full_name || 'Plant Sitter' %>
+          </strong>
+          —
+          <%= sitter.city || sitter.location || 'No location' %>
+
+          <br>
+
+          <% if (sitter.availability) { %>
+            <small>
+              <strong>Availability:</strong>
+              <%= sitter.availability %>
+            </small>
+            <br>
+          <% } %>
+
+          <% if (sitter.skills) { %>
+            <small>
+              <strong>Skills:</strong>
+              <%= sitter.skills %>
+            </small>
+          <% } %>
+
+        </li>
+      <% }) %>
+
+    </ul>
+
+  </div>
+
+  <%- include('partials/footer') %>
+
+</body>
+</html>

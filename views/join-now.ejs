@@ -1,0 +1,44 @@
+<html>
+<head>
+  <title>Join Now</title>
+  <%- include('partials/header1.ejs') %>
+</head> 
+<body>
+  <%- include('partials/navbar1.ejs') %>
+  <div class="container">
+<div class="container text-center mt-5">
+
+  <h2 class="mb-4">Choose how you want to join &#127793</h2>
+  <p class="mb-5">Select the option that fits what you want to do on PlantCare.</p>
+
+  <div class="row justify-content-center">
+
+    <!-- Plant Owner -->
+    <div class="col-md-4 mb-4">
+      <div class="join-card p-4 border rounded">
+         <img src="/public/images/plant-owner.jpg" class="img3" alt="Plant-owner">
+        <h4> &#127807 I am a Plant Owner</h4>
+        <p>I want someone to take care of my plants.</p>
+        <a href="/signup-owner" class="btn btn-outline-success">Register as Owner</a>
+      </div>
+    </div>
+
+    <!-- Plant Sitter -->
+    <div class="col-md-4 mb-4">
+      <div class="join-card p-4 border rounded">
+       <img class="img3" src="/public/images/plant-sitter.jpg" alt="Plant-sitter">
+        <h4> &#129716 I want to be a Plant Sitter</h4>
+        <p>I want to offer plant care to others.</p>
+        <a href="/signup-sitter" class="btn btn-success">Register as Sitter</a>
+      
+      </div>
+    </div>
+
+  </div>
+
+</div>
+  </div>
+  
+<%- include('partials/footer') %>
+</body>
+</html>

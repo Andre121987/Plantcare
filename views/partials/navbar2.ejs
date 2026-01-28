@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-sm bg-light">
+  <div class="container-fluid">
+
+    <a class="navbar-brand" href="/">
+      <img src="/public/images/plantcare-logo.png" alt="PlantCare Logo" class="navbar-logo">
+    </a>
+
+    <ul class="navbar-nav ms-auto">
+
+      <% if (user) { %>
+      <li class="nav-item dropdown ms-3">
+        <a 
+          class="nav-link dropdown-toggle" 
+          href="#" 
+          id="userDropdown"
+          role="button" 
+          data-bs-toggle="dropdown" 
+          aria-expanded="false"
+        >
+          👋 <%= user.name %>
+        </a>
+
+        <ul class="dropdown-menu dropdown-menu-end">
+          <% if (user.role === "owner") { %>
+            <li><a class="dropdown-item" href="/owner/profile">Settings</a></li>
+          <% } else if (user.role === "sitter") { %>
+            <li><a class="dropdown-item" href="/sitter/profile">Settings</a></li>
+          <% } %>
+
+          <li><hr class="dropdown-divider"></li>
+
+          <li><a class="dropdown-item text-danger" href="/logout">Logout</a></li>
+        </ul>
+      </li>
+      <% } %>
+
+    </ul>
+  </div>
+</nav>

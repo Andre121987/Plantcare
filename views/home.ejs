@@ -1,0 +1,78 @@
+<html>
+<head>
+
+  <title>PlantCare</title>
+    <%- include('partials/header1.ejs') %>
+
+</head>
+<body>
+    <!-- NAVBAR -->
+  <%- include('partials/navbar1.ejs') %>
+  <!-- CENTER SECTION-->
+  <div class="container text-center mb-5">
+    <h1 class="mb-3">Welcome to PlantCare</h1>
+    <p class="text-muted">
+      A simple way to get help taking care of your plants when you are not home.
+    </p>
+    <div class="container mb-4">
+  <form action="/search-plantsitter" method="GET" class="row justify-content-center">
+    
+    <div class="col-md-4 mb-2">
+      <input 
+        type="text" 
+        name="location"
+        class="form-control"
+        placeholder="Enter your city (e.g. Auckland)" required>
+    </div>
+
+    <div class="col-md-3 mb-2">
+      <button type="submit" class="btn btn-success w-100">
+        🔍 Search plant sitters
+      </button>
+    </div>
+
+  </form>
+</div>
+
+    <img class="img2" src="/public/images/Plant Care.avif" alt="PlantCare">
+  </div>
+
+ <section class="home-actions mt-5 text-center">
+  <h2 class="mb-4">What you can do here </h2>
+
+  <div class="row justify-content-center">
+
+  <div class="col-sm-4 mb-4">
+  <a href="/signup-owner" class="text-decoration-none text-dark">
+    <div class="action-card p-3 border rounded">
+      <h4> &#127807  Join as a Plant Owner</h4>
+      <p>Connect with people who can look after your plants.</p>
+    </div>
+  </a>
+</div>  
+
+    <div class="col-sm-4 mb-4">
+      <a href="/signup-sitter" class="text-decoration-none text-dark">
+      <div class="action-card p-3 border rounded">
+        <h4> &#129716 Become a plant sitter</h4>
+        <p>Sign up to help others take care of their plants.</p>
+      </div>
+    </a>
+    </div>
+
+    <div class="col-sm-4 mb-4">
+  <a href="/help" class="text-decoration-none text-dark">
+    <div class="action-card p-3 border rounded">
+      <h4>&#10067; Need help?</h4>
+      <p>Get answers to common questions and support.</p>
+    </div>
+  </a>
+</div>
+
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+
+</body>
+</html>

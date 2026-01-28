@@ -1,0 +1,62 @@
+<html>
+<head>
+  <title>Sign Up</title>
+ <%- include('partials/header2.ejs') %>
+</head>
+
+<body class="bg-gray-100">
+
+  <div class="flex justify-center mt-10">
+    <div class="bg-white shadow-lg rounded-xl p-6 w-full max-w-md">
+
+     <img src="/public/images/<%= role === 'owner' ? 'plant-owner.jpg' : 'plant-sitter.jpg' %>" 
+           class="w-full h-40 object-cover rounded-lg mb-4" 
+           alt="<%= role === 'owner' ? 'Plant Owner' : 'Plant Sitter' %>">
+
+      <h2 class="text-2xl font-semibold text-center mb-2">
+        Create your account
+      </h2>
+
+      <p class="text-center mb-4">
+        You are joining as a 
+        <strong><%= role === 'owner' ? 'Plant Owner' : 'Plant Sitter' %></strong>.
+      </p>
+
+      <form action="/signup" method="POST">
+
+        <input type="hidden" name="role" value="<%= role %>">
+
+        <label class="font-medium">Name</label>
+        <input type="text" name="name" required
+               class="w-full border rounded-lg p-2 mb-3">
+
+        <label class="font-medium">Surname</label>
+        <input type="text" name="surname" required 
+                class="w-full border rounded-lg p-2 mb-3">
+
+        <label class="font-medium">Email address</label>
+        <input type="email" name="email" required
+               class="w-full border rounded-lg p-2 mb-3">
+
+        <label class="font-medium">Password</label>
+        <input type="password" name="password" required
+               class="w-full border rounded-lg p-2 mb-4">
+
+        <button 
+          type="submit"
+          class="w-full bg-green-600 text-white py-2 rounded-lg font-semibold hover:bg-green-700">
+          Sign Up as <%= role === 'owner' ? 'Plant Owner' : 'Plant Sitter' %>
+        </button>
+
+      </form>
+
+      <p class="text-center mt-4">
+        Already have an account?  
+        <a href="/login" class="text-green-700 font-medium">Login</a>
+      </p>
+
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<html>
+<head>
+    <%- include('partials/header1.ejs') %>
+</head>
+
+<body>
+    <%- include('partials/navbar1.ejs') %>
+
+    <div class="login-wrapper">
+
+        <div class="login-left">
+            <h2 class="login-title">Log in</h2>
+            <p class="login-sub">Welcome back! We were hoping we'd see you again...</p>
+
+            <form action="/auth" method="POST">
+
+                <label>Email</label>
+                <input type="email" name="email" class="form-control login-input mb-3" required>
+
+                <label>Password</label>
+                <input type="password" name="password" class="form-control login-input mb-4" required>
+
+                <button type="submit" class="btn btn-login-custom">Log in</button>
+
+            </form>
+
+            <div class="mt-4">
+                <a href="#" style="color:#004d40;">Forgotten password?</a>
+            </div>
+        </div>
+
+        <div class="login-right">
+            <img src="/public/images/login-plants.jpg" class="login-img" alt="plant illustration">
+        </div>
+
+    </div>
+<%- include('partials/footer') %>
+
+</body>
+</html>

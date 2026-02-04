@@ -11,6 +11,9 @@ app.use(session({
 }));
 const multer = require('multer');
 const path = require('path');
+const bcrypt = require('bcrypt');
+const saltRounds = 10; 
+
 
 // search
 app.get('/search-plantsitter', (req, res) => {
@@ -83,13 +86,15 @@ app.get('/signup-owner', (req, res) => {
 app.get('/signup-sitter', (req, res) => {
   res.render('signup', { role: 'sitter' });
 });
-app.post('/signup', function (req, res) {
+app.post('/signup', async function (req, res) {
   const { name, surname, email, password, role } = req.body;
 
+   try {
+  
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
   const sql = "INSERT INTO users (name, surname, email, password, role) VALUES (?, ?, ?, ?, ?)";
-
-  conn.query(sql, [name, surname, email, password, role], (err, result) => {
-    if (err) return res.send("Error registering user: " + err.message);
+    conn.query(sql, [name, surname, email, hashedPassword, role], (err, result) => {
+      if (err) return res.send("Error registering user: " + err.message);
 
     // Create section
     req.session.loggedin = true;
@@ -112,6 +117,9 @@ app.post('/signup', function (req, res) {
       else return res.redirect("/sitter-dashboard");
     });
   });
+    } catch (err) {
+    res.send("Error hashing password: " + err.message);
+  }
 });
 
 
@@ -128,41 +136,52 @@ app.get('/login', function (req, res){
 res.render("login"); 
 }); 
 
-app.post('/auth', function(req, res) {
-
-    const email = req.body.email;  
+app.post('/auth', async function(req, res) {
+    const email = req.body.email;
     const password = req.body.password;
 
-    if (email && password) {
+    if (!email || !password) {
+        return res.send('Please enter Email and Password!');
+    }
 
-        const sql = "SELECT * FROM users WHERE email = ? AND password = ?";
+    const sql = "SELECT * FROM users WHERE email = ?";
+    conn.query(sql, [email], async function(err, results) {
+        if (err) throw err;
 
-        conn.query(sql, [email, password], function(err, results) {
-            if (err) throw err;
+        if (results.length > 0) {
+            const user = results[0];
 
-            if (results.length > 0) {
+            try {
+                
+                const match = await bcrypt.compare(password, user.password);
 
-                const user = results[0];
+                if (match) {
+                    
+                    req.session.loggedin = true;
+                    req.session.user = user;
 
-                req.session.loggedin = true;
-                req.session.user = user;
+                    if (user.role === "owner") {
+                        return res.redirect("/owner-dashboard");
+                    } else if (user.role === "sitter") {
+                        return res.redirect("/sitter-dashboard");
+                    } else {
+                        return res.send("User has no valid role");
+                    }
 
-                if (user.role === "owner") {
-                    return res.redirect("/owner-dashboard");
-                } else if (user.role === "sitter") {
-                    return res.redirect("/sitter-dashboard");
                 } else {
-                    return res.send("User has no valid role");
+                    
+                    return res.send('Incorrect Email and/or Password!');
                 }
 
-            } else {
-                res.send('Incorrect Email and/or Password!');
+            } catch (error) {
+                return res.send('Error checking password: ' + error.message);
             }
-        });
 
-    } else {
-        res.send('Please enter Email and Password!');
-    }
+        } else {
+           
+            return res.send('Incorrect Email and/or Password!');
+        }
+    });
 });
 
 app.get('/owner-dashboard', (req, res) => {
